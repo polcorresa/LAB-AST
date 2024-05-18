@@ -23,8 +23,12 @@ public class SimNet_Loss extends practica2.Protocol.SimNet_Monitor {
             mon.lock();
 
             if (rand.nextDouble() > lossRate) {
+                
                 super.send(seg);
                 
+            }else{
+               
+                System.out.print("+++++++++SEGMENT LOST:   ");
             }
         } finally {
             mon.unlock();

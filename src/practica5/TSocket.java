@@ -29,8 +29,8 @@ public class TSocket extends TSocket_base {
         // init sender variables
         MSS = p.getNetwork().getMTU() - Const.IP_HEADER - Const.TCP_HEADER;
         // init receiver variables
-        //rcv_Queue = new CircularQueue<>(Const.RCV_QUEUE_SIZE);
-        rcv_Queue = new CircularQueue<>(2);
+        rcv_Queue = new CircularQueue<>(Const.RCV_QUEUE_SIZE);
+        //rcv_Queue = new CircularQueue<>(2);
         snd_rcvWnd = Const.RCV_QUEUE_SIZE;
     }
 
@@ -151,8 +151,11 @@ public class TSocket extends TSocket_base {
                     zero_wnd_probe_ON = true;
                     System.out.println("---zero_wnd_probe ON");
                 } else {
+                    if(zero_wnd_probe_ON){
                     zero_wnd_probe_ON = false;
+                    
                     System.out.println("---zero_wnd_probe OFF");
+                    }
                 }
                 this.printRcvSeg(rseg);
                 appCV.signalAll();

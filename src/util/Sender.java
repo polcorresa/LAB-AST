@@ -32,7 +32,7 @@ public class Sender extends Thread {
           buf[j] = n;
           n = (byte) (n + 1);
         }
-        output.sendData(buf, 0, buf.length);
+        output.sendData(buf, 0, buf.length); 
       }
       log.printGREEN("Sender: transmission finished");
       numSenders = numSenders - 1;

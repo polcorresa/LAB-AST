@@ -27,8 +27,8 @@ public class SimNet_Loss extends practica2.Protocol.SimNet_Monitor {
                 super.send(seg);
                 
             }else{
-               
-                System.out.print("+++++++++SEGMENT LOST:   ");
+                System.out.println(seg.isAck()?"AckLost":"PushLost");
+                
             }
         } finally {
             mon.unlock();
